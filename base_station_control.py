@@ -1,8 +1,6 @@
-from os.path import exists
 import asyncio
 import time
 from bleak import BleakScanner, BleakClient, BleakError
-import argparse
 
 #############################################################
 # Code written by MissingNO123, modified by Connor White

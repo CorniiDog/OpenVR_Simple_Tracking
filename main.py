@@ -1,10 +1,7 @@
-import time, openvr, json, threading
+import time, threading
 import trackerpositions, base_station_control, plot_data_3d, plot_data_2d
-import keyboard
 import numpy as np
-import tkinter as tk
 import json
-import os
 
 #######################################################################################
 # Setup and Configuration

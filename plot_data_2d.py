@@ -1,6 +1,5 @@
 from matplotlib import pyplot as plt
 from scipy.spatial.transform import Rotation as R
-import numpy as np
 def update_ax(ax):
     ax.set_xlabel('X', fontsize=14)
     ax.set_ylabel('Z', fontsize=14)

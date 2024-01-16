@@ -1,0 +1,7 @@
+openvr
+numpy
+matplotlib
+bleak
+keyboard
+tk
+scipy

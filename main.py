@@ -3,6 +3,7 @@ import trackerpositions, base_station_control, plot_data_3d, plot_data_2d
 import keyboard
 import numpy as np
 import tkinter as tk
+import json
 import os
 
 #######################################################################################
@@ -41,7 +42,8 @@ turn_on_base_stations = False
 press_enter_to_next_frame = False
 
 # Time between position and rotation captures
-time_between_captures = 20  # milliseconds between frame
+time_between_captures = 40  # milliseconds between frames (what to aim for)
+# Note: Usually frame time is 10 milliseconds above what is put
 
 
 def update_plot(list_of_objects, ax):
@@ -89,7 +91,6 @@ if __name__ == '__main__':
 
     history = []
     print("Running")
-    last_milli_time = current_milli_time()
 
     while running:
 
@@ -146,16 +147,58 @@ if __name__ == '__main__':
                 except:
                     pass
 
-        process_time = milli_time - last_milli_time
-        history.append([process_time, list_of_objects])
+        process_time = current_milli_time() - milli_time
 
         if real_time_display:
             update_plot(list_of_objects, ax)
 
-        last_milli_time = milli_time
+
+        sleep_amount = max(time_between_captures - process_time, 0)
+        if sleep_amount > 0:
+            time.sleep(sleep_amount/1000)
 
 
-        time.sleep(max(time_between_captures - process_time, 0)/1000)
+        history.append([current_milli_time() - milli_time, list_of_objects])
+
+    # Save results as json
+    class NumpyEncoder(json.JSONEncoder):
+        def default(self, obj):
+            if isinstance(obj, np.ndarray):
+                return obj.tolist()
+            return json.JSONEncoder.default(self, obj)
+
+    with open('results.json', 'w') as f:
+        json.dump(history, f, cls=NumpyEncoder)
+
+    # Save results as lua file
+    indent = "\t"
+    with open("results.lua", "w") as export_file:
+        export_file.write("data = {\n")
+
+        for item in history:
+            list_of_objects = item[1]
+            delta_time = item[0]
+
+            export_file.write(indent + " {" + str(delta_time) + ", {\n")
+
+            for object in list_of_objects:
+                name = object["name"]
+                position = object["position"]
+                rotation = object["rotation"]
+
+                export_file.write(f"{indent*2}" + f"[\"{name}\"] = " + "{\n")
+
+                export_file.write(f"{indent * 3}" + f"X = {position[0]}, ")
+                export_file.write(f"Y = {position[1]}, ")
+                export_file.write(f"Z = {position[2]}, ")
+                export_file.write(f"Pitch = {rotation[0]}, ")
+                export_file.write(f"Roll = {rotation[1]}, ")
+                export_file.write(f"Yaw = {rotation[2]}\n")
+
+                export_file.write(f"{indent * 2}" + "},\n")
+
+            export_file.write(indent + "}},\n")
+        export_file.write("}")
 
     # Initialize plot
     if display_plot:

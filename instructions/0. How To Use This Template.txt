@@ -1,0 +1,10 @@
+1. Git Clone this repository (project_name is the name of the project you want to create):
+    git clone !<project_link> <project_name>
+
+2. CD into the project directory and remove the git repository:
+    cd <project_name> && rm -rf .git
+
+3. Run structure_builder.py for next steps:
+    python3 structure_builder.py
+
+You should then modify info.py. This file contains all the information about your project.

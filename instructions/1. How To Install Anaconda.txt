@@ -1,0 +1,23 @@
+Conda is a package manager for python. It is used to install python packages and conda packages.
+
+1. CD into the home directory:
+    cd ~
+
+2. Run the following command to download the conda installer:
+
+    wget [conda_install_link]
+
+    wget !<conda_install_link>
+
+3. Run the following command to install conda:
+
+    bash [conda_file]
+
+    bash !<conda_file>
+
+4. Run the following command to update conda:
+    conda update conda
+
+5. Run the following command to install conda-forge:
+    conda config --add channels conda-forge
+

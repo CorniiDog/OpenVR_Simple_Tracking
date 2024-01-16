@@ -1,0 +1,9 @@
+This is for removing the conda environment.
+
+1. Run the following command to remove the conda environment:
+    conda env remove --name [project_name]
+
+    conda env remove --name !<project_name>
+
+2. Reload the bashrc file:
+    source ~/.bashrc

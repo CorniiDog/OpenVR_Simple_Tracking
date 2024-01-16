@@ -1,0 +1,10 @@
+This is for creating a new conda environment.
+
+1. Run the following command to create a new conda environment:
+    conda create --name [project_name]
+
+    conda create --name !<project_name>
+
+2. Reload the bashrc file:
+    source ~/.bashrc
+

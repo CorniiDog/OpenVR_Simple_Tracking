@@ -1,0 +1,21 @@
+This is for installing python packages and conda packages.
+
+1. CD into the project directory:
+    cd [project_dir]
+
+    cd !<project_dir>
+
+2. Activate the conda environment:
+    conda activate [project_name]
+
+    conda activate !<project_name>
+
+3. Install the following requirements:
+
+    pip install -r [requirements_file] && conda install --file [conda_requirements_file]  && conda install -c conda-forge --file [conda_forge_requirements_file]
+
+    pip install -r !<requirements_file> && conda install --file !<conda_requirements_file>  && conda install -c conda-forge --file !<conda_forge_requirements_file>
+
+4. Install the following apt-get requirements:
+    !<apt_get_str>
+

@@ -130,6 +130,8 @@ if __name__ == '__main__':
             # get all trackers position and rotation
             for i in range(len(tracker_names)):
                 try:
+                    if tracker_names[i] == "":
+                        continue
                     tracker_position, tracker_rotation = trackerpositions.get_tracker_pose(i)
                     update_values(tracker_names[i], tracker_position, tracker_rotation, "g")
                 except:

@@ -86,11 +86,15 @@ if output_instructions:
                     file_path = os.path.join(root, file).replace(info.data["project_dir"], "")
                     if file_path.startswith("/"):
                         file_path = file_path[1:]
-                    # Split the path into folders
                     folders = str(file_path).split("/")
                     last_part = folders[-1].split(".")[0]
-                    file_document_path = info.data["docs_folder_dir"] + "/" + (str(file_path).strip().replace("/", "-").upper().split(".PY")[0]) + ".md"
+                    file_document_path = info.data["docs_folder_dir"] + "/" + (str(file_path).strip().replace("/", "-").replace("\\", "-").upper().split(".PY")[0]) + ".md"
 
+                    file_document_path = file_document_path.strip()
+                    if len(file_document_path.split("/")) > 1 and file_document_path.split("/")[-1].startswith("-"):
+                        file_document_path = file_document_path.split("/")[0] + "/" + file_document_path.split("/")[1][1:]
+
+                    print(file_document_path)
                     file2 = open(file_document_path, "w")
                     # Provide link to go back to DOCS.md
                     file2.write(f"[Back to DOCS.md](DOCS.md)\n\n")

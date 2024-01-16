@@ -53,9 +53,9 @@ if output_instructions:
 
     turn_to_readme = format_for_readme(output, document_path="docs/INSTRUCTIONS.md")
 
-    with open("../../Downloads/Template-master/Template-master/README.md", "w") as f:
+    with open("README.md", "w") as f:
         # Add all lines from ABOUT.md to README.md
-        with open("../../Downloads/Template-master/Template-master/ABOUT.md", "r") as about:
+        with open("ABOUT.md", "r") as about:
             for line in about.readlines():
 
                 for key, value in info.data.items():

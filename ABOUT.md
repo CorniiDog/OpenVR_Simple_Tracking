@@ -31,31 +31,14 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="/storage/logo.png" alt="Logo" height="80">
+    <img src="<path_to_logo>" alt="Logo" height="80">
   </a>
 </div>
 
 <!-- ABOUT -->
 ## About
 
-
-# OpenVR Simple Tracking
-OPENVR Steam Position Tracking in Python that retreives X Y and Z position and rotation
-
-Open the project in VSCode or some python IDE, while running SteamVR.
-
-Install requirements...
-```angular2html
-pip install -r requirements.txt
-```
-Afterwards, open main.py and modify settings to how you see fit, then run main.py with
-```angular2html
-python main.py
-```
-When you are done recording, press [Enter] in the command line to automatically save and/or replay what was recorded.
-
-This can track the VR headset, base stations, controllers, and trackers. Modify however you see fit, I don't care lol.
-
+<about>
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -80,30 +63,24 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Connor White - connor.sw.personal@gmail.com
+<full_name> - <email>
 
-Project Link: [https://github.com/ConnorAtmos/OpenVR_Simple_Tracking](https://github.com/ConnorAtmos/OpenVR_Simple_Tracking)
+Project Link: [<project_link>](<project_link>)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/ConnorAtmos/OpenVR_Simple_Tracking.svg?style=for-the-badge
-[contributors-url]: https://github.com/ConnorAtmos/OpenVR_Simple_Tracking/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/ConnorAtmos/OpenVR_Simple_Tracking.svg?style=for-the-badge
-[forks-url]: https://github.com/ConnorAtmos/OpenVR_Simple_Tracking/network/members
-[stars-shield]: https://img.shields.io/github/stars/ConnorAtmos/OpenVR_Simple_Tracking.svg?style=for-the-badge
-[stars-url]: https://github.com/ConnorAtmos/OpenVR_Simple_Tracking/stargazers
-[issues-shield]: https://img.shields.io/github/issues/ConnorAtmos/OpenVR_Simple_Tracking.svg?style=for-the-badge
-[issues-url]: https://github.com/ConnorAtmos/OpenVR_Simple_Tracking/issues
-[license-shield]: https://img.shields.io/github/license/ConnorAtmos/OpenVR_Simple_Tracking.svg?style=for-the-badge
-[license-url]: https://github.com/ConnorAtmos/OpenVR_Simple_Tracking/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/<github_name>/<project_name>.svg?style=for-the-badge
+[contributors-url]: https://github.com/<github_name>/<project_name>/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/<github_name>/<project_name>.svg?style=for-the-badge
+[forks-url]: https://github.com/<github_name>/<project_name>/network/members
+[stars-shield]: https://img.shields.io/github/stars/<github_name>/<project_name>.svg?style=for-the-badge
+[stars-url]: https://github.com/<github_name>/<project_name>/stargazers
+[issues-shield]: https://img.shields.io/github/issues/<github_name>/<project_name>.svg?style=for-the-badge
+[issues-url]: https://github.com/<github_name>/<project_name>/issues
+[license-shield]: https://img.shields.io/github/license/<github_name>/<project_name>.svg?style=for-the-badge
+[license-url]: https://github.com/<github_name>/<project_name>/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/connor-white-38a5501a0/
-
-
-## DOCUMENTATION
-
-[For Documentation, Click Here](docs/DOCS.md)
-
+[linkedin-url]: <linked_in_url>

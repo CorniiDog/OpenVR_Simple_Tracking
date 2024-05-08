@@ -21,13 +21,13 @@ headset_name = "Head"
 left_controller = True
 left_controller_name = "Left Hand"  # "Left Hand"
 
-right_controller = False
+right_controller = True
 right_controller_name = "Right Hand"  # "Right Hand"
 
 # Enable/disable tracker recording
 trackers = True
 # Tracker Names (Put names for each one that will be present)
-tracker_names = ["Right Foot", "Left Foot", "Gun"]
+tracker_names = ["Head", "Left Foot", "Gun"]
 
 # Enable/disable base station recording
 base_stations = False

@@ -90,7 +90,7 @@ def initialize_plot():
 
     plt.title("3D Space", fontsize=20)
     plt.show()
-    return ax, fig
+    return ax, fig, plt
 
 
 def wait_for_button_press():

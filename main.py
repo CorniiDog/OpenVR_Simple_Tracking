@@ -2,6 +2,7 @@ import time, threading
 from toolbox import base_station_control, plot_data_2d, plot_data_3d, trackerpositions
 import numpy as np
 import json
+import tkinter as tk
 
 #######################################################################################
 # Setup and Configuration
@@ -14,14 +15,18 @@ real_time_display = False # Display in real time during recording (Can cause per
 
 # Enable/disable headset recording
 headset = False
+headset_name = "Head"
 
 # Enable/disable controller recording
 left_controller = True
+left_controller_name = "Left Hand"  # "Left Hand"
+
 right_controller = False
+right_controller_name = "Right Hand"  # "Right Hand"
 
 # Enable/disable tracker recording
 trackers = True
-# Tracker Names (Put names for each ones that will be present)
+# Tracker Names (Put names for each one that will be present)
 tracker_names = ["Right Foot", "Left Foot", "Gun"]
 
 # Enable/disable base station recording
@@ -39,7 +44,7 @@ turn_on_base_stations = False
 press_enter_to_next_frame = False
 
 # Time between position and rotation captures
-time_between_captures = 40  # milliseconds between frames (what to aim for)
+time_between_captures = 20  # milliseconds between frames (what to aim for)
 # Note: Usually frame time is 10 milliseconds above what is put
 
 
@@ -69,22 +74,34 @@ if __name__ == '__main__':
 
     running = True
 
-    ax, fig = None, None
+    ax, fig, plt = None, None, None
     if real_time_display:
         if two_dimensional:
-            ax, fig = plot_data_2d.initialize_plot()
+            ax, fig, plt = plot_data_2d.initialize_plot()
         else:
-            ax, fig = plot_data_3d.initialize_plot()
+            ax, fig, plt = plot_data_3d.initialize_plot()
+
+    root = None
+    # Exit if the user presses x
+    def on_exit_func():
+        global running
+        running = False
+        if root is not None:
+            root.destroy()
 
 
     # Exit if the user presses x
     def listener():
-        global running
-        input()
-        running = False
-        print("Finishing")
-    threading.Thread(target=listener).start()
+        global root
+        root = tk.Tk()
+        root.title("Finished Menu")
 
+        button = tk.Button(root, text="Stop Recording", command=on_exit_func)
+        button.pack(pady=20, padx=20)
+
+        root.mainloop()
+
+    threading.Thread(target=listener).start()
 
     history = []
     print("Running")
@@ -114,17 +131,17 @@ if __name__ == '__main__':
         if headset:
             # get headset position and rotation
             headset_position, headset_rotation = trackerpositions.get_headset_pose()
-            update_values("Headset", headset_position, headset_rotation, "k")
+            update_values(headset_name, headset_position, headset_rotation, "k")
 
         if left_controller:
             # get left controller position and rotation
             left_controller_position, left_controller_rotation = trackerpositions.get_left_controller_pose()
-            update_values("Left Controller", left_controller_position, left_controller_rotation, "r")
+            update_values(left_controller_name, left_controller_position, left_controller_rotation, "r")
 
         if right_controller:
             # get right controller position and rotation
             right_controller_position, right_controller_rotation = trackerpositions.get_right_controller_pose()
-            update_values("Right Controller", right_controller_position, right_controller_rotation, "b")
+            update_values(right_controller_name, right_controller_position, right_controller_rotation, "b")
 
         if trackers:
             # get all trackers position and rotation
@@ -201,12 +218,12 @@ if __name__ == '__main__':
 
     # Initialize plot
     if display_plot:
-
-        if not ax or not fig:
+        print("Playback Started")
+        if not ax or not fig or not plt:
             if two_dimensional:
-                ax, fig = plot_data_2d.initialize_plot()
+                ax, fig, plt = plot_data_2d.initialize_plot()
             else:
-                ax, fig = plot_data_3d.initialize_plot()
+                ax, fig, plt = plot_data_3d.initialize_plot()
             print("Plot initialized")
 
         # Display the data
@@ -244,3 +261,4 @@ if __name__ == '__main__':
 
             process_time += current_milli_time() - first_time
 
+    plt.close()

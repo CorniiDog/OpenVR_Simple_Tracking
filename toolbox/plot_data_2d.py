@@ -16,7 +16,7 @@ def initialize_plot():
 
     plt.title("2D Top-Down View", fontsize=20)
     plt.show()
-    return ax, fig
+    return ax, fig, plt
 
 def wait_for_button_press():
     a = plt.waitforbuttonpress()
